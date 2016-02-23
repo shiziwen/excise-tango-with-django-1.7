@@ -18,7 +18,8 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse('<a href="/rango/">Index</a></br>Rango says here is the about page.')
+    return render(request, 'rango/about.html', {})
+    # return HttpResponse('<a href="/rango/">Index</a></br>Rango says here is the about page.')
 
 
 def category(request, category_name_slug):
@@ -136,7 +137,8 @@ def user_login(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+    return render(request, 'rango/restricted.html', {})
+    # return HttpResponse("Since you're logged in, you can see this text!")
 
 
 @login_required
