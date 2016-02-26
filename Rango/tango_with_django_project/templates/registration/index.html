@@ -1,7 +1,8 @@
 {% extends "rango/base.html" %}
 
 {% block body_block %}
-<h1>Login</h1>
+<div class="page-header">
+    <h1>Login</h1>
         <form method="post" action=".">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -11,4 +12,5 @@
                 </form>
 
         <p>Not  a member? <a href="{% url 'registration_register' %}">Register</a>!</p>
+</div>
 {% endblock %}
