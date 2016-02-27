@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
+from rango.bing_search import run_query
 
 
 # Create your views here.
@@ -216,3 +217,18 @@ def user_logout(request):
     logout(request)
 
     return HttpResponseRedirect('/rango/')
+
+
+def search(request):
+    result_list = []
+
+    if request.method == 'POST':
+        print 'post'
+        query = request.POST['query'].strip()
+
+        if query:
+            result_list = run_query(query)
+
+    print 'GET'
+
+    return render(request, 'rango/search.html', {'result_list': result_list})
